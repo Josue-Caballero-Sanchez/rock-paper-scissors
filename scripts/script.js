@@ -15,8 +15,36 @@ function GetComputerChoice(){
 }
 
 function PlayRound(playerSelection, computerSelection){
-    playerSelection.toLowerCase();
-    computerSelection.toLowerCase();
+    const topText = document.querySelector(".top-text");
+    const topText2 = document.querySelector(".top-text-2");
+    const playerChoice = document.querySelector(".player-choice");
+    const computerChoice = document.querySelector(".computer-choice");
+    const choiceContainer = document.querySelector(".choice-container");
+    const scorePlayer = document.querySelector(".player-score");
+    const scoreComputer = document.querySelector(".computer-score");
+
+    choiceContainer.style.cssText = "gap: 0px";
+    
+    if(playerSelection === "rock"){
+        playerChoice.textContent = "✊";
+    }
+    else if(playerSelection === "paper"){
+        playerChoice.textContent = "✋";
+    }
+    else{
+        playerChoice.textContent = "✌";
+    }
+
+    if(computerSelection === "rock"){
+        computerChoice.textContent = "✊";
+    }
+    else if(computerSelection === "paper"){
+        computerChoice.textContent = "✋";
+    }
+    else{
+        computerChoice.textContent = "✌";
+    }
+
     playerWin = 0;
 
     if(playerSelection === "rock" && computerSelection === "scissors"){
@@ -33,14 +61,36 @@ function PlayRound(playerSelection, computerSelection){
     }
 
     if(playerWin === 1){
-        return "You Win! " + CapitalizeFirst(playerSelection) + " beats " + CapitalizeFirst(computerSelection);  
+        playerScore ++;
+        scorePlayer.textContent = "Player " + playerScore;
+        topText.textContent = "You Win!";
+        topText2.textContent = "" + CapitalizeFirst(playerSelection) + " beats " + CapitalizeFirst(computerSelection);
+
+        if(playerScore === 5){
+            alert("You Win!");
+            location.reload();
+        }
+
+        return;  
     }
     else if(playerWin === 0){
-        return "You Lose! " + CapitalizeFirst(playerSelection) + " loses to " + CapitalizeFirst(computerSelection);
+        computerScore ++;
+        scoreComputer.textContent = "Computer: " + computerScore;
+        topText.textContent = "You Lose!";
+        topText2.textContent = "" + CapitalizeFirst(playerSelection) + " loses to " + CapitalizeFirst(computerSelection);
+
+        if(computerScore === 5){
+            alert("You Lose!");
+            location.reload();
+        }
+
+        return;
     }
-
-    return "It's a Tie!";
-
+    else{
+        topText.textContent = "It's a tie!";
+        topText2.textContent = "" + CapitalizeFirst(playerSelection) + " ties with " + CapitalizeFirst(computerSelection);
+        return;
+    }
 }
 
 function CapitalizeFirst(string){
@@ -49,37 +99,28 @@ function CapitalizeFirst(string){
     return firstletter + string.slice(1);
   }
 
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
 
-    while(-1){
-        let playerSelection = prompt("Choose your move");
-        console.log(PlayRound(playerSelection, GetComputerChoice()));
-
-        if(playerWin === 1){
-            playerScore ++;
-        }
-        else if(playerWin === 0){
-            computerScore ++;
-        }
-
-        console.log("Player: " + playerScore);
-        console.log("Computer: " + computerScore);
-
-        if(computerScore === 5){
-            console.log("You Lose!");
-            break;
-        }
-    
-        else if(playerScore === 5){
-            console.log("You Win!");
-            break;
-        }
-    }
-}
 
 let playerWin;
-game();
+let playerScore = 0;
+let computerScore = 0;
+
+
+const rockButton = document.querySelector(".rock");
+const paperButton = document.querySelector(".paper");
+const scissorsButton = document.querySelector(".scissors");
+
+rockButton.addEventListener('click', () => {
+    PlayRound("rock", GetComputerChoice());
+});
+
+paperButton.addEventListener('click', () => {
+    PlayRound("paper", GetComputerChoice());
+});
+
+scissorsButton.addEventListener('click', () => {
+    PlayRound("scissors", GetComputerChoice());
+});
+
 
 

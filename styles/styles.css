@@ -1,0 +1,97 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    background-color: black;
+    text-align: center;
+    padding: 5px;
+}
+
+.header-text{
+    color: yellow;
+}
+
+.top-text{
+    text-align: center;
+    margin-bottom: 0px;
+    font-size: 50px;
+}
+
+.top-text-2{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.score-container,
+.choice-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 125px;
+}
+
+.choice-container{
+    margin-top: -30px;
+    gap: 50px;
+}
+
+.computer-choice,
+.player-choice{
+    font-size: 125px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+.score-container{
+    margin-top: -15px;
+    gap: 90px;
+}
+.player-score{
+    margin: 0;
+    padding: 0;
+    flex-basis: 175px;
+    text-align: right;
+}
+
+.computer-score{
+    margin: 0;
+    padding: 0;
+    flex-basis: 175px;
+}
+
+.move-container{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.rock,
+.paper,
+.scissors{
+    font-size: 100px;
+    background-color: black;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.rock:hover,
+.paper:hover,
+.scissors:hover{
+    cursor: pointer;
+}
+
+.rock:active,
+.paper:active,
+.scissors:active{
+    opacity: .5;
+}
+
